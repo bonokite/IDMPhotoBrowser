@@ -510,6 +510,9 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
 }
 
 - (void)dismissPhotoBrowserAnimated:(BOOL)animated {
+    // Stop control hiding timer
+    [self cancelControlHiding];
+    
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 
     if ([_delegate respondsToSelector:@selector(photoBrowser:willDismissAtPageIndex:)])
